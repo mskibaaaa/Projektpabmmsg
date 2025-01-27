@@ -23,7 +23,7 @@ public class Zadanie {
         return id;
     }
 
-    public void setId(Long id) {//siema
+    public void setId(Long id) {
         this.id = id;
     }
 
