@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista zadań</title>
+</head>
+<body>
+<h1>Lista zadań</h1>
+<a href="/zadania/nowe">Dodaj nowe zadanie</a>
+<table>
+  <thead>
+  <tr>
+    <th>Opis</th>
+    <th>Status</th>
+    <th>Akcje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="zadanie : ${zadania}">
+    <td th:text="${zadanie.opis}"></td>
+    <td th:text="${zadanie.ukonczone ? 'Ukończone' : 'Nieukończone'}"></td>
+    <td>
+      <form th:action="@{/zadania/{id}/zmien-status(id=${zadanie.id})}" method="post">
+        <button type="submit" th:text="${zadanie.ukonczone ? 'Nieukończone' : 'Ukończone'}"></button>
+      </form>
+      <form th:action="@{/zadania/{id}/usun(id=${zadanie.id})}" method="post">
+        <button type="submit">Usuń</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
