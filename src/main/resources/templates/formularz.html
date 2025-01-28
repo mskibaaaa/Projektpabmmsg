@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dodaj nowe zadanie</title>
+</head>
+<body>
+<h1>Dodaj nowe zadanie</h1>
+
+<form action="/zadania" th:object="${zadanie}" method="post">
+  <label>Opis zadania:</label>
+  <input type="text" th:field="*{opis}" placeholder="Wpisz opis zadania" />
+  <div th:if="${#fields.hasErrors('opis')}" th:errors="*{opis}">Błąd: opis jest wymagany!</div>
+
+  <button type="submit">Dodaj zadanie</button>
+</form>
+
+<a href="/zadania">Powrót do listy zadań</a>
+</body>
+</html>
